@@ -3,11 +3,13 @@ Swagger Copy
 
 ## About
 
-Copy JSON values displayed in Swagger UI code area to clipboard
+Chrome Extension to copy JSON values displayed in Swagger UI code area to clipboard
 
 ## Screenshot
 
 <img src="images/screenshot.png">
+
+https://petstore.swagger.io/
 
 ## Target version
 
