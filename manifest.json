@@ -1,0 +1,13 @@
+{
+  "name": "Swagger Copy",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Copy JSON values displayed in Swagger UI code area to clipboard",
+  "content_scripts": [
+    {
+      "matches": ["*://*/swagger-ui*"],
+      "js": ["lib/jquery.min.js", "src/script.js"],
+      "css": ["css/style.css"]
+    }
+  ]
+}
