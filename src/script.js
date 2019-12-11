@@ -19,12 +19,22 @@ $(function() {
   }, target);
 
   $(document).on('click', `#${elemId}`, evt => {
-    const children = $(evt.target).parent().find('span');
-    const text = children.toArray().map(e =>
-      e.innerHTML
-    ).reduce((acc, cur) => 
-      acc.concat('', cur)
-    );
-    copyToClipboard(text);
+    const $pre = $(evt.target).parent();
+    const $children = $pre.find('span');
+    if ($children.length) {
+      // <pre><span>foo...</span><span>bar...</span>...<div>Copy...</div></pre>
+      const text = $children.toArray().map(e =>
+        e.innerHTML
+      ).reduce((acc, cur) =>
+        acc.concat('', cur)
+      );
+      copyToClipboard(text);
+    } else {
+      // <pre>{json...}<div>Copy...</div></pre>
+      const textNode = $pre.contents().toArray().filter(c => c.nodeType == 3); // text node
+      if (textNode) {
+        copyToClipboard(textNode[0].nodeValue);
+      }
+    }
   });
 });
