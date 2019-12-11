@@ -14,16 +14,12 @@ $(function() {
   const elem = `<div id="${elemId}">Copy to Clipboard</div>`;
 
   $(document).on({
-    mouseenter: function(e) { // should not be changed to arrow function
-      $(this).append(elem);
-    },
-    mouseleave: function(e) {
-      $(`${target} div`).remove();
-    },
+    mouseenter: e => $(e.target).append(elem),
+    mouseleave: e => $(`${target} div`).remove(),
   }, target);
 
-  $(document).on('click', `#${elemId}`, function(e) {
-    const children = $(this).parent().find('span');
+  $(document).on('click', `#${elemId}`, evt => {
+    const children = $(evt.target).parent().find('span');
     const text = children.toArray().map(e =>
       e.innerHTML
     ).reduce((acc, cur) => 
