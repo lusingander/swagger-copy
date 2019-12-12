@@ -13,7 +13,7 @@ https://petstore.swagger.io/
 
 ## Target version
 
-Swagger: xxx
+Swagger UI: 3.x
 
 ## Todo
 
