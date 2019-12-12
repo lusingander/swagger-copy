@@ -23,11 +23,7 @@ $(function() {
     const $children = $pre.find('span');
     if ($children.length) {
       // <pre><span>foo...</span><span>bar...</span>...<div>Copy...</div></pre>
-      const text = $children.toArray().map(e =>
-        e.innerHTML
-      ).reduce((acc, cur) =>
-        acc.concat('', cur)
-      );
+      const text = $children.toArray().map(e => e.innerHTML).join('');
       copyToClipboard(text);
     } else {
       // <pre>{json...}<div>Copy...</div></pre>
