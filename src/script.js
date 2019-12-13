@@ -15,7 +15,7 @@ $(function() {
 
   $(document).on({
     mouseenter: e => $(e.target).append(elem),
-    mouseleave: e => $(`${target} div`).remove(),
+    mouseleave: _ => $(`#${elemId}`).remove(),
   }, target);
 
   $(document).on('click', `#${elemId}`, evt => {
@@ -27,9 +27,9 @@ $(function() {
       copyToClipboard(text);
     } else {
       // <pre>{json...}<div>Copy...</div></pre>
-      const textNode = $pre.contents().toArray().filter(c => c.nodeType == 3); // text node
+      const textNode = $pre.contents().toArray().find(c => c.nodeType === 3); // text node
       if (textNode) {
-        copyToClipboard(textNode[0].nodeValue);
+        copyToClipboard(textNode.nodeValue);
       }
     }
   });
